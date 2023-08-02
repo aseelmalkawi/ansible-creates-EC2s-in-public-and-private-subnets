@@ -1,0 +1,32 @@
+- name: EC2
+  hosts: localhost
+  become: true
+  tasks:
+  - name: Ensure boto and boto3 modules are installed
+    pip:
+      name: "{{ item }}"
+    with_items:
+      - boto3
+      - botocore
+    delegate_to: 54.161.27.169
+
+  - name: create private ec2
+    amazon.aws.ec2_instance:
+      name: public_ec2
+      key_name: mykey
+      region: us-east-1
+      instance_type: t2.micro
+      image_id: ami-053b0d53c279acc90
+      vpc_subnet_id: subnet-046affe74a77ebb88
+      security_group: sg-00822c59eae4710c7
+      exact_count: 1
+    register: ec2_instance
+
+  - ansible.builtin.pause:
+      seconds: 30
+
+  - name: Add the private EC2 instance to the host group
+    template:
+        src: temp.j2
+        dest: /etc/ansible/hosts
+    become: yes
