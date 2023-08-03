@@ -34,4 +34,4 @@
     become: yes
     
   - name: print
-    command: cat /etc/ansible/hosts
+    ansible.builtin.command: ansible-playbook play2.yml
