@@ -2,13 +2,13 @@
   hosts: publicec2
   become: true
   tasks:
-  - name: Ensure boto and boto3 modules are installed
-    pip:
-      name: "{{ item }}"
-    with_items:
-      - boto3
-      - botocore
-    delegate_to: 54.161.27.169
+  # - name: Ensure boto and boto3 modules are installed
+  #   pip:
+  #     name: "{{ item }}"
+  #   with_items:
+  #     - boto3
+  #     - botocore
+  #   delegate_to: 
 
   - name: create ec2
     amazon.aws.ec2_instance:
