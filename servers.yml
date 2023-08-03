@@ -8,8 +8,11 @@
   #   with_items:
   #     - boto3
   #     - botocore
-  #   delegate_to: 
-
+  #   delegate_to:
+  
+- name: Include a play after another play
+  ansible.builtin.import_playbook: play2.yml
+  
   - name: create ec2
     amazon.aws.ec2_instance:
       aws_access_key: "{{ AWS_ACCESS_KEY }}"
@@ -32,11 +35,6 @@
         src: temp.j2
         dest: /etc/ansible/hosts
     become: yes
-    
-- name: Include a play after another play
-  ansible.builtin.import_playbook: play2.yml
 
-- hosts: publicec2 
-  tasks:
   - name: play 2nd book
     ansible.builtin.command: ansible-playbook play2.yml
