@@ -14,8 +14,8 @@ jobs:
       - run:
           name: Run Ansible playbook
           command: |
-            ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws ubuntu@ec2-54-234-96-26.compute-1.amazonaws.com "
-            ansible-playbook -i inventory.yml --private-key=$HOME/.ssh/aws --extra-vars "AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" servers.yml"
+            ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws ubuntu@ec2-54-234-96-26.compute-1.amazonaws.com --extra-vars "AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY" " 
+            ansible-playbook -i inventory.yml servers.yml"
             
 workflows:
   version: 2
