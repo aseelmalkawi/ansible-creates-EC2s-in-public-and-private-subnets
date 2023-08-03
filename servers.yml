@@ -34,5 +34,5 @@
         dest: /etc/ansible/hosts
     become: yes
 
-  - name: play 2nd book
-    ansible.builtin.command: ansible-playbook --private-key=mykey.pem play2.yml
+  # - name: play 2nd book
+  #   ansible.builtin.command: ansible-playbook --private-key=mykey.pem play2.yml
