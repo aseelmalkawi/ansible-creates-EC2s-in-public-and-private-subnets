@@ -1,8 +1,6 @@
 - name: EC2
   hosts: publicec2
   become: true
-  - name: Include a play after another play
-    ansible.builtin.import_playbook: play2.yml
   tasks:
   # - name: Ensure boto and boto3 modules are installed
   #   pip:
@@ -37,3 +35,6 @@
     
   - name: play 2nd book
     ansible.builtin.command: ansible-playbook play2.yml
+    
+- name: Include a play after another play
+  ansible.builtin.import_playbook: play2.yml
