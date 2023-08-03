@@ -12,7 +12,7 @@
   
 - name: Include a play after another play
   ansible.builtin.import_playbook: play2.yml
-  
+  tasks:
   - name: create ec2
     amazon.aws.ec2_instance:
       aws_access_key: "{{ AWS_ACCESS_KEY }}"
