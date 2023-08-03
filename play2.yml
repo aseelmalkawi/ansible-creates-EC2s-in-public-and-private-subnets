@@ -1,5 +1,5 @@
 - name: Private EC2 Play
-  hosts: private_ec2
+  hosts: privateec2
   become: true
   tasks:
   - name: Creating an empty file
