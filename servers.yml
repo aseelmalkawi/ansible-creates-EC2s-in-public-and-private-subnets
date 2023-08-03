@@ -33,6 +33,12 @@
         src: temp.j2
         dest: /etc/ansible/hosts
     become: yes
-
-  # - name: play 2nd book
-  #   ansible.builtin.command: ansible-playbook --private-key=mykey.pem play2.yml
+    
+- name: Private EC2 Play
+  hosts: privateec2
+  become: true
+  tasks:
+  - name: Creating an empty file
+    file:
+      path: /test.txt
+      state: touch
