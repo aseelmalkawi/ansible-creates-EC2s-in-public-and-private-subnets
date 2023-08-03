@@ -1,5 +1,5 @@
 - name: EC2
-  hosts: localhost
+  hosts: publicec2
   become: true
   tasks:
   - name: Ensure boto and boto3 modules are installed
@@ -10,7 +10,7 @@
       - botocore
     delegate_to: 54.161.27.169
 
-  - name: create private ec2
+  - name: create ec2
     amazon.aws.ec2_instance:
       name: public_ec2
       key_name: mykey
@@ -28,5 +28,5 @@
   - name: Add the private EC2 instance to the host group
     template:
         src: temp.j2
-        dest: /etc/ansible/hosts
+        dest: inventory.yml
     become: yes
