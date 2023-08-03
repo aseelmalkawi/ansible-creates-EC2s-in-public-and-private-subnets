@@ -1,5 +1,3 @@
-- name: Include a play after another play
-  ansible.builtin.import_playbook: play2.yml
 - name: EC2
   hosts: publicec2
   become: true
@@ -35,5 +33,10 @@
         dest: /etc/ansible/hosts
     become: yes
     
+- name: Include a play after another play
+  ansible.builtin.import_playbook: play2.yml
+
+- hosts: publicec2 
+  tasks:
   - name: play 2nd book
     ansible.builtin.command: ansible-playbook play2.yml
