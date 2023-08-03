@@ -12,6 +12,8 @@
 
   - name: create ec2
     amazon.aws.ec2_instance:
+      aws_access_key: {{ AWS_ACCESS_KEY }}
+      aws_secret_key: {{ AWS_SECRET_KEY }}
       name: public_ec2
       key_name: mykey
       region: us-east-1
