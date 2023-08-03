@@ -33,5 +33,8 @@
         dest: /etc/ansible/hosts
     become: yes
     
-  - name: print
+  - name: Include a play after another play
+    ansible.builtin.import_playbook: play2.yml
+    
+  - name: play 2nd book
     ansible.builtin.command: ansible-playbook play2.yml
