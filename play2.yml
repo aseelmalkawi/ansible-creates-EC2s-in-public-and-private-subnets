@@ -1,0 +1,8 @@
+- name: Private EC2 Play
+  hosts: private_ec2
+  become: true
+  tasks:
+  - name: Creating an empty file
+    file:
+      path: /test.txt
+      state: touch
