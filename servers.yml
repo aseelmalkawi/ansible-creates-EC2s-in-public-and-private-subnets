@@ -10,8 +10,6 @@
   #     - botocore
   #   delegate_to:
   
-- name: Include a play after another play
-  ansible.builtin.import_playbook: play2.yml
   tasks:
   - name: create ec2
     amazon.aws.ec2_instance:
@@ -37,4 +35,4 @@
     become: yes
 
   - name: play 2nd book
-    ansible.builtin.command: ansible-playbook play2.yml
+    ansible.builtin.command: ansible-playbook --private-key=mykey.pem play2.yml
