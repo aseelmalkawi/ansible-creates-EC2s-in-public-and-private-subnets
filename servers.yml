@@ -1,3 +1,5 @@
+- name: Include a play after another play
+  ansible.builtin.import_playbook: play2.yml
 - name: EC2
   hosts: publicec2
   become: true
@@ -35,6 +37,3 @@
     
   - name: play 2nd book
     ansible.builtin.command: ansible-playbook play2.yml
-    
-- name: Include a play after another play
-  ansible.builtin.import_playbook: play2.yml
