@@ -13,7 +13,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Run Ansible playbook
-          command: ansible-playbook -i inventory.yml --private-key=$HOME/.ssh/aws
+          command: ansible-playbook -i inventory.yml --private-key=$HOME/.ssh/aws --extra-vars "AWS_ACCESS_KEY=${AWS_ACCESS_KEY} AWS_SECRET_KEY=${AWS_SECRET_KEY}" servers.yml
             
 workflows:
   version: 2
